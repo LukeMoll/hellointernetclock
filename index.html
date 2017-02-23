@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello Internet Time</title>
+    <style media="screen">
+      body {
+        background: #737373;
+      }
+    </style>
+    <script type="text/javascript">
+      var flag;
+
+      function getHours(now = new Date()) {
+        return now.getHours() % 12;
+      }
+
+      function getMinutes(now = new Date()) {
+        return now.getMinutes();
+      }
+
+
+      var angle = 0;
+      function draw() {
+        // angle = (angle + 1) % 360;
+        angle = (getHours() * 30) + (0.5 * getMinutes());
+        flag.style.transform = "rotate(" + angle + "deg)";
+        window.requestAnimationFrame(draw);
+      }
+
+
+      function init() {
+          flag = document.getElementById('flag');
+          console.log(flag);
+          window.requestAnimationFrame(draw);
+      }
+    </script>
+  </head>
+  <body>
+    <img id="flag" src="flag.png" alt="Hello Internet flag">
+    <script type="text/javascript">
+      init();
+    </script>
+  </body>
+</html>
